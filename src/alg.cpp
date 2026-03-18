@@ -53,10 +53,10 @@ unsigned int seqCollatz(unsigned int *maxlen,
     unsigned int topLength = 0;
     unsigned int bestNumber = lbound;
 
-    for (uint64_t num = lbound; num <= rbound; num++) {
-        unsigned int currentLength = collatzLen(num);
-        if (currentLength > topLength) {
-            topLength = currentLength;
+    for (uint64_t num = lbound; num <= rbound; ++num) {
+        uint64_t len = collatzLen(num);
+        if (len > topLength) {
+            topLength = len;
             bestNumber = num;
         }
     }
