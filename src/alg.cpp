@@ -42,23 +42,20 @@ unsigned int collatzLen(uint64_t num) {
 unsigned int seqCollatz(unsigned int *maxlen,
                         uint64_t lbound,
                         uint64_t rbound) {
-    if (lbound > rbound || lbound < 2) {
-        *maxlen = 0;
-        return 0;
-    }
-
-    unsigned int topLength = 0;
+    unsigned int maxiLength = 0;
     unsigned int bestNumber = lbound;
 
-    for (uint64_t num = lbound; num <= rbound; ++num) {
+    for (uint64_t num = lbound; num <= rbound; num++) {
         unsigned int len = collatzLen(num);
-        if (len > topLength) {
-            topLength = len;
+
+        if (len > maxiLength) {
+            maxiLength = len;
             bestNumber = num;
         }
     }
 
-    *maxlen = topLength;
-
+    if (maxlen != nullptr) {
+        *maxlen = maxiLength;
+    }
     return bestNumber;
 }
